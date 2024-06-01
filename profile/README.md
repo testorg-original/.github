@@ -24,3 +24,7 @@ hubValidations::validate_submission(
 )
 ```
 to double check validations were working and the file did indeed validate successfully.
+
+## Changing org name to `testorg`
+
+Next I changed the org name to `testorg`
