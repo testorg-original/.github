@@ -27,7 +27,7 @@ to double check validations were working and the file did indeed validate succes
 
 ## Changing org name to `testorg`
 
-Next I changed the org name to `testorg-rename`
+Next I changed the org name to `testorg-rename` and ran through the validation and tests run previously. Need to ensure a fresh session everythim as the functions for fetching the schema are memoised.
 
 ### Check Hubs
 
@@ -36,4 +36,7 @@ Next I changed the org name to `testorg-rename`
 
 ### Check Sotware Tests
 
-- [x] `hubAdmin`
+- [x] `hubUtils`
+- [x] `hubAdmin`. However the functions for creating config schema ids was obviously still creating URLs to the old org name. It looks like they would work through redirects anyways though.
+- [x] `hubData` same as before, only S3 tests that had not been originally updated failed. But I imagine, just like other hubs, if we had started with `testorg-original` these would also have passed.
+- [x] `hubValidations`
