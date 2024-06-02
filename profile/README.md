@@ -27,4 +27,13 @@ to double check validations were working and the file did indeed validate succes
 
 ## Changing org name to `testorg`
 
-Next I changed the org name to `testorg`
+Next I changed the org name to `testorg-rename`
+
+### Check Hubs
+
+- [x] Hub validation of file worked! locally.
+- [x] PR would work also as `install_github("testorg-original/hubAdmin")` works.
+
+### Check Sotware Tests
+
+- [x] `hubAdmin`
