@@ -55,3 +55,34 @@ Next I went through and replaced `testorg-original` with `testorg-rename` as bef
 - [x] `hubAdmin`. When updating `hubAdmin` without having updated the schema, functions for creating config objects where using the old orgname. That's because it propagates the `id` of the schema property of the file schema actually used to create the config against. This sounds like reasonable behaviour. It cause problems for tests but that's because the find and replace action also replaces the orgname in the snapshots of test results. So while the functions where using schema and creating config objects with the old orgname, the snapshots had been updated with the new orgname. This would would either require re-snapshotting manually to allow for this or more targeted find and replace. Both are fiddlier than necessary and would only be required if the orgname was only changed in the latest schema version directory (instead of the whole schema repo, see below). It's why I'm proposing a full reset of the schema repo instead of just a single directory.
 - [x] `hubData` same as above.
 - [x] `hubValidations` tests passed except for tests on functions that check validity of hub `config` (e.g. `validate_pr`) where the same error emanating from `validate_schema_version_property` and reported above in `hubUtils` testing was observed (`"EXEC ERROR: Error in purrr::map(configs, ~validate_config(hub_path = hub_path, config = .x,  : \n  i In index: "| __truncated__`. Making `validate_schema_version_property` back-compatible would fix this issues also though.
+- [ ] Validating submission file without change orgname in config files now fails with the familiar error:
+      ```
+      ✖ 2022-10-22-MOBS-GLEAM_FLUH.csv: EXEC ERROR: Error in purrr::map(configs,
+  ~validate_config(hub_path = hub_path, config = .x, : ℹ In index: 1. Caused by error in
+  `check_config_schema_version()` at hubAdmin/R/config-schema-utils.R:8:3: ✖ Invalid
+  `schema_version` property. ℹ Valid `schema_version` properties should start with
+  "https://raw.githubusercontent.com/testorg-rename/schemas/main/" and resolve to the schema
+  file's raw contents on GitHub.
+  ```
+  Again, making `validate_schema_version_property` back-compatible would fix this problem.
+  Once find and replace was performed, validation succeeded. Find and replace also fix instances in GitHub Actions, and various READMEs in the hub which is overall a good idea.
+
+
+
+
+
+
+
+
+
+
+
+
+## Actions
+
+All remotes need to be changed in all repos too to silence the following git push warnings.
+```
+Please use the new location:        
+remote:   https://github.com/testorg-rename/hubValidations.git        
+To https://github.com/testorg-original/hubValidations.git
+```
