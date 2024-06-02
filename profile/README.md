@@ -56,7 +56,7 @@ Next I went through and replaced `testorg-original` with `testorg-rename` as bef
 - [x] `hubData` same as above.
 - [x] `hubValidations` tests passed except for tests on functions that check validity of hub `config` (e.g. `validate_pr`) where the same error emanating from `validate_schema_version_property` and reported above in `hubUtils` testing was observed (`"EXEC ERROR: Error in purrr::map(configs, ~validate_config(hub_path = hub_path, config = .x,  : \n  i In index: "| __truncated__`. Making `validate_schema_version_property` back-compatible would fix this issues also though.
 - [ ] Validating submission file without change orgname in config files now fails with the familiar error:
-      ```
+  ```
       ✖ 2022-10-22-MOBS-GLEAM_FLUH.csv: EXEC ERROR: Error in purrr::map(configs,
   ~validate_config(hub_path = hub_path, config = .x, : ℹ In index: 1. Caused by error in
   `check_config_schema_version()` at hubAdmin/R/config-schema-utils.R:8:3: ✖ Invalid
@@ -64,8 +64,10 @@ Next I went through and replaced `testorg-original` with `testorg-rename` as bef
   "https://raw.githubusercontent.com/testorg-rename/schemas/main/" and resolve to the schema
   file's raw contents on GitHub.
   ```
+  
   Again, making `validate_schema_version_property` back-compatible would fix this problem.
-  Once find and replace was performed, validation succeeded. Find and replace also fix instances in GitHub Actions, and various READMEs in the hub which is overall a good idea.
+
+  **Once find and replace was performed, validation succeeded**. However, find and replace also fix instances in GitHub Actions, and various READMEs in the hub which is overall a good idea.
 
 
 
