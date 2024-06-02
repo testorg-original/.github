@@ -67,7 +67,7 @@ Next I went through and replaced `testorg-original` with `testorg-rename` as bef
   
   Again, making `validate_schema_version_property` back-compatible would fix this problem.
 
-  **Once find and replace was performed, validation succeeded**. However, find and replace also fix instances in GitHub Actions, and various READMEs in the hub which is overall a good idea.
+  **Once find and replace was performed, validation succeeded**. However, find and replace also fixed instances in GitHub Actions, and various READMEs in the hub which is overall a good idea.
 
 
 
