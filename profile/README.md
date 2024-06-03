@@ -79,8 +79,13 @@ Next I created a new version in the schema main branch and only changed the org 
 - [x] `hubData`. All good.
 - [x] `hubValidation` same as above.
 - [x] Validating submission files: succeeds same as above (as org name has been changed)
-- [ ] 
 
+
+## Make `hubAdmin` back-compatible
+
+Next I allowed `check_config_schema_version` and `validate_schema_version_property` to accept both `testorg-original` and `testorg-rename` as valid organisations in the schema version URL check. This fixed the failing `validate_pr` tests in `hubValidations` and made the function back-compatible.
+
+## Replace or instances of the old org in the schema repo
 
 
 
