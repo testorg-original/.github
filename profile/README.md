@@ -108,6 +108,7 @@ I would also suggest just changing the old org name to the new orgname through t
 
 - Add back-compatible version of `check_config_schema_version` and `validate_schema_version_property` in `hubAdmin`. to allow for both old and new orgnames to pass validation. hub admins to take their time updating
 - Find and replace old orgname with new orgname throughout repos in the organisation
+- It might also be a good idea to find and replace instances of `Infectious Disease Modeling Hubs` also.
 - All remotes need to be changed in all repos too to silence the following git push warnings.
   ```
   Please use the new location:        
@@ -117,4 +118,7 @@ I would also suggest just changing the old org name to the new orgname through t
 
 ### [hub admins] 
 
-At some point hub admins would be advised to do a find and replace to the new org name in their hubs.
+- At some point hub admins would be advised to do a find and replace to the new org name in their hubs.
+- It might also be a good idea to find and replace instances of `Infectious Disease Modeling Hubs` also.
+- Remotes need to be changed too to the correct org name.
+
