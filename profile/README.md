@@ -87,18 +87,34 @@ Next I allowed `check_config_schema_version` and `validate_schema_version_proper
 
 ## Replace or instances of the old org in the schema repo
 
+I tried this with the back-compatible version of `hubAdmin` and without.
+
+- [x] `hubUtils` all good.
+- [x] `hubData` all good. As above
+- [x] `hubAdmin`. Now all tests pass and even using older versions of the schema with `create_*` functions now uses the updated org name.
+- [x] `hubValidations` without `hubAdmin` back-compatibility this fails again because the schema_id in the ci-test hub is still pointing to the old org-name. With the back-compatible version all is good.
+- [x]  Validating submission files: succeeds same as above (as org name has been changed)
 
 
+# Summary
 
+Link redirecting actually makes initial transition cause no problems with the current versions of software (so long as the orgname `Infectious-Disease-Modeling-Hubs` is still available).  Adding back-compatibility in the couple of functions that were explicitly using the old orgname will allow hubs with the old org in their `schema_id` to use newer versions of packages. This will give them breathing space to update schema ids at their convenience.
 
+I would also suggest just changing the old org name to the new orgname through the entire schema repo. It makes all other updates (`hubAdmin` in particular) easier with a find and replace. It also means that creating config using older versions of the schema with `create_*` functions will also use the updated org name.
 
+## Actions 
 
+### [hubverse devs] (to facilitate smooth transition)
 
-## Actions
+- Add back-compatible version of `check_config_schema_version` and `validate_schema_version_property` in `hubAdmin`. to allow for both old and new orgnames to pass validation. hub admins to take their time updating
+- Find and replace old orgname with new orgname throughout repos in the organisation
+- All remotes need to be changed in all repos too to silence the following git push warnings.
+  ```
+  Please use the new location:        
+  remote:   https://github.com/testorg-rename/hubValidations.git        
+  To https://github.com/testorg-original/hubValidations.git
+  ```
 
-All remotes need to be changed in all repos too to silence the following git push warnings.
-```
-Please use the new location:        
-remote:   https://github.com/testorg-rename/hubValidations.git        
-To https://github.com/testorg-original/hubValidations.git
-```
+### [hub admins] 
+
+At some point hub admins would be advised to do a find and replace to the new org name in their hubs.
