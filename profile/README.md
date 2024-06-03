@@ -47,7 +47,7 @@ Next I changed the org name to `testorg-rename` and ran through the validation a
 Next I went through and replaced `testorg-original` with `testorg-rename` as before. All changes were done in branch `change-orgname`.
 
 - [x] `hubUtils`: As `hubUtils` contains the utility functions for working with schema, it's best to change this package first. 
-  In addition, there is a test in `hubUtils` for checking the validity of the config in test hubs in `inst/` which required `hubAdmin` functions. For those to pass, `hubAdmin` also needed to be updated, in particular function `validate_schema_version_property` which returns the following error before replacing:
+  In addition, there is a test in `hubUtils` for checking the validity of the config in test hubs in `inst/` which required `hubAdmin` functions. For those to pass, `hubAdmin` also needed to be updated, in particular function `check_config_schema_version` (and `validate_schema_version_property`) which returns the following error before replacing:
   ```
   Error in purrr::map(configs, ~validate_config(hub_path = hub_path, config = .x, : i In index: 1. Caused by error in `check_config_schema_version()`: x Invalid `schema_version` property. i Valid `schema_version` properties should start with "https://raw.githubusercontent.com/testorg-original/schemas/main/" and resolve to the schema file's raw contents on GitHub.
   ```
@@ -65,7 +65,7 @@ Next I went through and replaced `testorg-original` with `testorg-rename` as bef
   file's raw contents on GitHub.
   ```
   
-  Again, making `validate_schema_version_property` back-compatible would fix this problem.
+  Again, making `check_config_schema_version` back-compatible would fix this problem.
 
   **Once find and replace was performed, validation succeeded**. However, find and replace also fixed instances in GitHub Actions, and various READMEs in the hub which is overall a good idea.
 
