@@ -71,6 +71,11 @@ Next I went through and replaced `testorg-original` with `testorg-rename` as bef
 
 
 
+## Change org name only in new schema version
+
+Next I created a new version in the schema main branch and only changed the org name in the `id` properties of the latest version. Then I re-ran all above checks:
+- [x] `hubUtils` all good
+- [x] `hubAdmin`. Now, in many of the `create_*` family of functions tests which use the default latest schema, tests are failing and new snapshots with the new schema are required, which is fine and expected. Snapshots which point to older versions though for back-compatibilty are still also failing and will need to be set to the older org name (as discussed above).
 
 
 
