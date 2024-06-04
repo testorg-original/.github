@@ -102,6 +102,8 @@ Link redirecting actually makes initial transition cause no problems with the cu
 
 I would also suggest just changing the old org name to the new orgname through the entire schema repo. It makes all other updates (`hubAdmin` in particular) easier with a find and replace. It also means that creating config using older versions of the schema with `create_*` functions will also use the updated org name.
 
+Finally, I suggest we fold all this into the release of the v3 schema.
+
 ## Actions 
 
 ### [hubverse devs] (to facilitate smooth transition)
