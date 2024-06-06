@@ -121,6 +121,8 @@ Finally, I suggest we fold all this into the release of the v3 schema.
 ### [hub admins] 
 
 - At some point hub admins would be advised to do a find and replace to the new org name in their hubs.
+- This also needs to be done in any s3 hubs used for testing.
 - It might also be a good idea to find and replace instances of `Infectious Disease Modeling Hubs` also.
 - Remotes need to be changed too to the correct org name.
+
 
